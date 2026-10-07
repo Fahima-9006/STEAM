@@ -1,15 +1,28 @@
+/* =========================================================
+   STEAM LOCATOR NIGERIA
+   COMPLETE JAVASCRIPT
+   ========================================================= */
+
 document.addEventListener("DOMContentLoaded", function () {
 
-    // ================================
-    // REGISTER FORM
-    // ================================
+    /* =====================================================
+       REGISTRATION FORM
+       ===================================================== */
+
     const registerForm = document.getElementById("registerForm");
     const registerMessage = document.getElementById("registerMessage");
     const registerSubmitButton = document.getElementById("registerSubmitButton");
 
     if (registerForm) {
+
         registerForm.addEventListener("submit", async function (event) {
+
+            // Prevent page reload
             event.preventDefault();
+
+            /* ---------------------------------------------
+               Get form fields
+            --------------------------------------------- */
 
             const fullName = document.getElementById("fullName");
             const email = document.getElementById("email");
@@ -20,18 +33,44 @@ document.addEventListener("DOMContentLoaded", function () {
                 'input[name="interest"]:checked'
             );
 
-            if (!fullName || !email || !state || !education) {
-                console.error("Required form fields are missing.");
+
+            /* ---------------------------------------------
+               Check that fields exist
+            --------------------------------------------- */
+
+            if (
+                !fullName ||
+                !email ||
+                !state ||
+                !education
+            ) {
+                showRegisterMessage(
+                    "There is a problem with the registration form. Please refresh the page and try again.",
+                    "error"
+                );
+
                 return;
             }
 
+
+            /* ---------------------------------------------
+               Check STEAM interest
+            --------------------------------------------- */
+
             if (!selectedInterest) {
+
                 showRegisterMessage(
                     "Please select at least one STEAM interest.",
                     "error"
                 );
+
                 return;
             }
+
+
+            /* ---------------------------------------------
+               Collect form data
+            --------------------------------------------- */
 
             const data = {
                 name: fullName.value.trim(),
@@ -41,169 +80,533 @@ document.addEventListener("DOMContentLoaded", function () {
                 interest: selectedInterest.value
             };
 
-            if (!data.name || !data.email || !data.state || !data.education) {
+
+            /* ---------------------------------------------
+               Validate required fields
+            --------------------------------------------- */
+
+            if (
+                !data.name ||
+                !data.email ||
+                !data.state ||
+                !data.education ||
+                !data.interest
+            ) {
+
                 showRegisterMessage(
                     "Please complete all required fields.",
                     "error"
                 );
+
                 return;
             }
 
-            if (registerSubmitButton) {
-                registerSubmitButton.disabled = true;
-                registerSubmitButton.textContent = "Submitting...";
+
+            /* ---------------------------------------------
+               Basic email validation
+            --------------------------------------------- */
+
+            const emailPattern =
+                /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            if (!emailPattern.test(data.email)) {
+
+                showRegisterMessage(
+                    "Please enter a valid email address.",
+                    "error"
+                );
+
+                return;
             }
 
-            showRegisterMessage("Submitting your registration...", "info");
+
+            /* ---------------------------------------------
+               Disable button while submitting
+            --------------------------------------------- */
+
+            if (registerSubmitButton) {
+
+                registerSubmitButton.disabled = true;
+
+                registerSubmitButton.innerHTML = `
+                    <span>Submitting...</span>
+                    <i class="fas fa-spinner fa-spin"></i>
+                `;
+            }
+
+
+            /* ---------------------------------------------
+               Show submitting message
+            --------------------------------------------- */
+
+            showRegisterMessage(
+                "Submitting your registration...",
+                "info"
+            );
+
+
+            /* ---------------------------------------------
+               Send data to Flask
+            --------------------------------------------- */
 
             try {
+
                 const response = await fetch("/api/register", {
+
                     method: "POST",
+
                     headers: {
                         "Content-Type": "application/json"
                     },
+
                     body: JSON.stringify(data)
+
                 });
 
-                const result = await response.json();
+
+                /* -----------------------------------------
+                   Safely read server response
+                ----------------------------------------- */
+
+                let result;
+
+                try {
+
+                    result = await response.json();
+
+                } catch (jsonError) {
+
+                    result = {
+                        success: false,
+                        message:
+                            "The server returned an unexpected response."
+                    };
+                }
+
+
+                /* -----------------------------------------
+                   Successful registration
+                ----------------------------------------- */
 
                 if (response.ok && result.success) {
-                    showRegisterMessage(
-                        result.message || "Registration successful! Thank you for joining us.",
-                        "success"
-                    );
+
+                    /*
+                     * If your Flask backend sends an email,
+                     * it can return:
+                     *
+                     * email_sent: true
+                     *
+                     * Then we show the email confirmation.
+                     */
+
+                    if (result.email_sent === true) {
+
+                        showRegisterMessage(
+                            "You successfully registered through the website! A confirmation email has also been sent to your email address.",
+                            "success"
+                        );
+
+                    } else {
+
+                        showRegisterMessage(
+                            result.message ||
+                            "You successfully registered through the website! Your registration has been saved successfully.",
+                            "success"
+                        );
+                    }
+
+
+                    /* -------------------------------------
+                       Clear form after successful submit
+                    ------------------------------------- */
 
                     registerForm.reset();
+
+
+                    /* -------------------------------------
+                       Scroll to success message
+                    ------------------------------------- */
+
+                    if (registerMessage) {
+
+                        registerMessage.scrollIntoView({
+                            behavior: "smooth",
+                            block: "center"
+                        });
+                    }
+
                 } else {
+
+                    /* -------------------------------------
+                       Registration failed
+                    ------------------------------------- */
+
                     showRegisterMessage(
-                        result.message || "Something went wrong. Please try again.",
+                        result.message ||
+                        "Registration could not be completed. Please try again.",
                         "error"
                     );
                 }
 
             } catch (error) {
-                console.error("Registration error:", error);
+
+                console.error(
+                    "Registration error:",
+                    error
+                );
 
                 showRegisterMessage(
-                    "Unable to connect to the server. Please try again.",
+                    "Unable to connect to the server. Please make sure the Flask server is running and try again.",
                     "error"
                 );
+
             } finally {
+
+                /* -----------------------------------------
+                   Restore button
+                ----------------------------------------- */
+
                 if (registerSubmitButton) {
+
                     registerSubmitButton.disabled = false;
-                    registerSubmitButton.textContent = "Register Now";
+
+                    registerSubmitButton.innerHTML = `
+                        <span>Join STEAM Locator</span>
+                        <i class="fas fa-arrow-right"></i>
+                    `;
                 }
             }
+
         });
     }
 
 
-    // ================================
-    // REGISTER MESSAGE
-    // ================================
+    /* =====================================================
+       REGISTRATION MESSAGE FUNCTION
+       ===================================================== */
+
     function showRegisterMessage(message, type) {
-        if (!registerMessage) return;
+
+        if (!registerMessage) {
+            return;
+        }
 
         registerMessage.textContent = message;
-        registerMessage.className = "form-message " + type;
+
+        registerMessage.className =
+            "form-message " + type;
+
         registerMessage.style.display = "block";
     }
 
 
-    // ================================
-    // CONTACT FORM
-    // ================================
-    const contactForm = document.getElementById("contactForm");
-    const contactMessage = document.getElementById("contactMessage");
-    const contactSubmitButton = document.getElementById("contactSubmitButton");
+    /* =====================================================
+       CONTACT FORM
+       ===================================================== */
+
+    const contactForm =
+        document.getElementById("contactForm");
+
+    const contactMessage =
+        document.getElementById("contactMessage");
+
+    const contactSubmitButton =
+        document.getElementById("contactSubmitButton");
+
 
     if (contactForm) {
+
         contactForm.addEventListener("submit", async function (event) {
+
+            // Prevent page reload
             event.preventDefault();
 
-            const name = document.getElementById("contactName");
-            const email = document.getElementById("contactEmail");
-            const subject = document.getElementById("contactSubject");
-            const message = document.getElementById("contactText");
 
-            if (!name || !email || !subject || !message) {
-                console.error("Contact form fields are missing.");
+            /* ---------------------------------------------
+               Get fields
+            --------------------------------------------- */
+
+            const name =
+                document.getElementById("contactName");
+
+            const email =
+                document.getElementById("contactEmail");
+
+            const subject =
+                document.getElementById("contactSubject");
+
+            const message =
+                document.getElementById("contactText");
+
+
+            /* ---------------------------------------------
+               Check fields
+            --------------------------------------------- */
+
+            if (
+                !name ||
+                !email ||
+                !subject ||
+                !message
+            ) {
+
+                showContactMessage(
+                    "There is a problem with the contact form. Please refresh the page and try again.",
+                    "error"
+                );
+
                 return;
             }
 
+
+            /* ---------------------------------------------
+               Collect data
+            --------------------------------------------- */
+
             const data = {
+
                 name: name.value.trim(),
+
                 email: email.value.trim(),
+
                 subject: subject.value.trim(),
+
                 message: message.value.trim()
+
             };
 
-            if (!data.name || !data.email || !data.subject || !data.message) {
+
+            /* ---------------------------------------------
+               Validate fields
+            --------------------------------------------- */
+
+            if (
+                !data.name ||
+                !data.email ||
+                !data.subject ||
+                !data.message
+            ) {
+
                 showContactMessage(
                     "Please complete all fields.",
                     "error"
                 );
+
                 return;
             }
 
-            if (contactSubmitButton) {
-                contactSubmitButton.disabled = true;
-                contactSubmitButton.textContent = "Sending...";
+
+            /* ---------------------------------------------
+               Email validation
+            --------------------------------------------- */
+
+            const emailPattern =
+                /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            if (!emailPattern.test(data.email)) {
+
+                showContactMessage(
+                    "Please enter a valid email address.",
+                    "error"
+                );
+
+                return;
             }
 
-            showContactMessage("Sending your message...", "info");
+
+            /* ---------------------------------------------
+               Disable button
+            --------------------------------------------- */
+
+            if (contactSubmitButton) {
+
+                contactSubmitButton.disabled = true;
+
+                contactSubmitButton.innerHTML = `
+                    <span>Sending...</span>
+                    <i class="fas fa-spinner fa-spin"></i>
+                `;
+            }
+
+
+            /* ---------------------------------------------
+               Show sending message
+            --------------------------------------------- */
+
+            showContactMessage(
+                "Sending your message...",
+                "info"
+            );
+
+
+            /* ---------------------------------------------
+               Send to Flask
+            --------------------------------------------- */
 
             try {
-                const response = await fetch("/api/contact", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify(data)
-                });
 
-                const result = await response.json();
+                const response = await fetch(
+                    "/api/contact",
+                    {
+                        method: "POST",
 
-                if (response.ok && result.success) {
+                        headers: {
+                            "Content-Type":
+                                "application/json"
+                        },
+
+                        body: JSON.stringify(data)
+                    }
+                );
+
+
+                /* -----------------------------------------
+                   Read response
+                ----------------------------------------- */
+
+                let result;
+
+                try {
+
+                    result = await response.json();
+
+                } catch (jsonError) {
+
+                    result = {
+                        success: false,
+                        message:
+                            "The server returned an unexpected response."
+                    };
+                }
+
+
+                /* -----------------------------------------
+                   Success
+                ----------------------------------------- */
+
+                if (
+                    response.ok &&
+                    result.success
+                ) {
+
                     showContactMessage(
-                        result.message || "Your message was sent successfully!",
+                        result.message ||
+                        "Your message was sent successfully!",
                         "success"
                     );
 
                     contactForm.reset();
+
+
+                    if (contactMessage) {
+
+                        contactMessage.scrollIntoView({
+                            behavior: "smooth",
+                            block: "center"
+                        });
+                    }
+
                 } else {
+
                     showContactMessage(
-                        result.message || "Something went wrong. Please try again.",
+                        result.message ||
+                        "Something went wrong. Please try again.",
                         "error"
                     );
                 }
 
             } catch (error) {
-                console.error("Contact error:", error);
+
+                console.error(
+                    "Contact error:",
+                    error
+                );
 
                 showContactMessage(
-                    "Unable to connect to the server. Please try again.",
+                    "Unable to connect to the server. Please make sure the Flask server is running and try again.",
                     "error"
                 );
+
             } finally {
+
+                /* -----------------------------------------
+                   Restore contact button
+                ----------------------------------------- */
+
                 if (contactSubmitButton) {
+
                     contactSubmitButton.disabled = false;
-                    contactSubmitButton.textContent = "Send Message";
+
+                    contactSubmitButton.innerHTML = `
+                        <span>Send Message</span>
+                        <i class="fas fa-paper-plane"></i>
+                    `;
                 }
             }
+
         });
     }
 
 
-    // ================================
-    // CONTACT MESSAGE
-    // ================================
+    /* =====================================================
+       CONTACT MESSAGE FUNCTION
+       ===================================================== */
+
     function showContactMessage(message, type) {
-        if (!contactMessage) return;
+
+        if (!contactMessage) {
+            return;
+        }
 
         contactMessage.textContent = message;
-        contactMessage.className = "form-message " + type;
+
+        contactMessage.className =
+            "form-message " + type;
+
         contactMessage.style.display = "block";
+    }
+
+
+    /* =====================================================
+       MOBILE NAVIGATION
+       ===================================================== */
+
+    const menuToggle =
+        document.querySelector(".menu-toggle");
+
+    const navLinks =
+        document.querySelector(".nav-links");
+
+
+    if (menuToggle && navLinks) {
+
+        menuToggle.addEventListener(
+            "click",
+            function () {
+
+                navLinks.classList.toggle("show");
+
+            }
+        );
+
+
+        /* Close menu after clicking a link */
+
+        const links =
+            navLinks.querySelectorAll("a");
+
+        links.forEach(function (link) {
+
+            link.addEventListener(
+                "click",
+                function () {
+
+                    navLinks.classList.remove("show");
+
+                }
+            );
+
+        });
     }
 
 });
