@@ -1,0 +1,390 @@
+
+{% extends "base.html" %}
+
+{% block title %}
+Join STEAM Locator Nigeria
+{% endblock %}
+
+{% block content %}
+
+<!-- ================= REGISTER PAGE ================= -->
+
+<section class="register-page">
+
+    <div class="register-container">
+
+        <!-- ================= HEADER ================= -->
+
+        <div class="register-header">
+
+            <div class="register-icon">
+                <i class="fas fa-user-graduate"></i>
+            </div>
+
+            <span class="eyebrow">
+                JOIN THE COMMUNITY
+            </span>
+
+            <h1>
+                Tell us a little
+                <span>about yourself.</span>
+            </h1>
+
+            <p>
+                Create your free profile so we can help you
+                discover STEAM opportunities, resources,
+                projects, and learning pathways.
+            </p>
+
+        </div>
+
+
+        <!-- ================= FORM CARD ================= -->
+
+        <div class="register-card">
+
+            <form id="registerForm">
+
+                <!-- ================= PERSONAL INFORMATION ================= -->
+
+                <div class="form-section">
+
+                    <div class="form-section-title">
+
+                        <span class="section-number">
+                            01
+                        </span>
+
+                        <div>
+                            <h2>
+                                Personal information
+                            </h2>
+
+                            <p>
+                                Tell us how we can identify you.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-row">
+
+                        <!-- FULL NAME -->
+
+                        <div class="form-group">
+
+                            <label for="name">
+                                Full Name
+                            </label>
+
+                            <div class="input-wrapper">
+
+                                <i class="fas fa-user"></i>
+
+                                <input
+                                    type="text"
+                                    id="name"
+                                    name="name"
+                                    placeholder="Enter your full name"
+                                    autocomplete="name"
+                                    required
+                                >
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- EMAIL -->
+
+                        <div class="form-group">
+
+                            <label for="email">
+                                Email Address
+                            </label>
+
+                            <div class="input-wrapper">
+
+                                <i class="fas fa-envelope"></i>
+
+                                <input
+                                    type="email"
+                                    id="email"
+                                    name="email"
+                                    placeholder="you@example.com"
+                                    autocomplete="email"
+                                    required
+                                >
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ================= LOCATION & EDUCATION ================= -->
+
+                <div class="form-section">
+
+                    <div class="form-section-title">
+
+                        <span class="section-number">
+                            02
+                        </span>
+
+                        <div>
+                            <h2>
+                                About your journey
+                            </h2>
+
+                            <p>
+                                Help us understand where you are in your STEAM journey.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-row">
+
+                        <!-- STATE -->
+
+                        <div class="form-group">
+
+                            <label for="state">
+                                State
+                            </label>
+
+                            <div class="input-wrapper">
+
+                                <i class="fas fa-location-dot"></i>
+
+                                <select
+                                    id="state"
+                                    name="state"
+                                    required
+                                >
+
+                                    <option value="">
+                                        Select your state
+                                    </option>
+
+                                    <option value="Lagos">
+                                        Lagos
+                                    </option>
+
+                                    <option value="Ogun">
+                                        Ogun
+                                    </option>
+
+                                    <option value="Abuja (FCT)">
+                                        Abuja (FCT)
+                                    </option>
+
+                                    <option value="Oyo">
+                                        Oyo
+                                    </option>
+
+                                    <option value="Rivers">
+                                        Rivers
+                                    </option>
+
+                                    <option value="Kaduna">
+                                        Kaduna
+                                    </option>
+
+                                    <option value="Kano">
+                                        Kano
+                                    </option>
+
+                                    <option value="Other">
+                                        Other
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- EDUCATION -->
+
+                        <div class="form-group">
+
+                            <label for="education">
+                                Education Level
+                            </label>
+
+                            <div class="input-wrapper">
+
+                                <i class="fas fa-graduation-cap"></i>
+
+                                <select
+                                    id="education"
+                                    name="education"
+                                    required
+                                >
+
+                                    <option value="">
+                                        Select your level
+                                    </option>
+
+                                    <option value="Secondary School">
+                                        Secondary School
+                                    </option>
+
+                                    <option value="Undergraduate">
+                                        Undergraduate
+                                    </option>
+
+                                    <option value="Graduate">
+                                        Graduate
+                                    </option>
+
+                                    <option value="Other">
+                                        Other
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ================= STEAM INTEREST ================= -->
+
+                <div class="form-section">
+
+                    <div class="form-section-title">
+
+                        <span class="section-number">
+                            03
+                        </span>
+
+                        <div>
+                            <h2>
+                                Your STEAM interest
+                            </h2>
+
+                            <p>
+                                Choose the area you would most like to explore.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="interest">
+                            Your STEAM Interest
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <i class="fas fa-lightbulb"></i>
+
+                            <select
+                                id="interest"
+                                name="interest"
+                                required
+                            >
+
+                                <option value="">
+                                    Choose an area
+                                </option>
+
+                                <option value="Science">
+                                    Science
+                                </option>
+
+                                <option value="Technology">
+                                    Technology
+                                </option>
+
+                                <option value="Engineering">
+                                    Engineering
+                                </option>
+
+                                <option value="Arts / Digital Arts">
+                                    Arts / Digital Arts
+                                </option>
+
+                                <option value="Mathematics">
+                                    Mathematics
+                                </option>
+
+                                <option value="Artificial Intelligence">
+                                    Artificial Intelligence
+                                </option>
+
+                                <option value="Coding">
+                                    Coding
+                                </option>
+
+                                <option value="Robotics">
+                                    Robotics
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ================= SUBMIT ================= -->
+
+                <div class="register-submit">
+
+                    <button
+                        type="submit"
+                        class="btn btn-primary btn-create-profile"
+                    >
+
+                        <span>
+                            Create My Profile
+                        </span>
+
+                        <i class="fas fa-arrow-right"></i>
+
+                    </button>
+
+                    <p class="form-note">
+                        <i class="fas fa-lock"></i>
+                        Your information is used only to create your STEAM Locator profile.
+                    </p>
+
+                </div>
+
+
+                <!-- ================= MESSAGE ================= -->
+
+                <div
+                    id="registerMessage"
+                    class="form-message"
+                    style="display: none;"
+                ></div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

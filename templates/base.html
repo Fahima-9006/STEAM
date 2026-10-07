@@ -1,0 +1,438 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="STEAM Locator Nigeria helps students discover opportunities in science, technology, engineering, arts, and mathematics."
+    >
+
+    <meta
+        name="keywords"
+        content="STEAM, STEM, Nigeria, students, scholarships, universities, opportunities, mentorship, resources"
+    >
+
+    <meta
+        name="author"
+        content="STEAM Locator Nigeria"
+    >
+
+    <title>
+        {% block title %}
+        STEAM Locator Nigeria
+        {% endblock %}
+    </title>
+
+
+    <!-- =====================================================
+         GOOGLE FONTS
+         ===================================================== -->
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <!-- =====================================================
+         FONT AWESOME
+         ===================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+
+    <!-- =====================================================
+         MAIN CSS
+         ===================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    >
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================================
+     HEADER / NAVIGATION
+========================================================= -->
+
+<header class="site-header">
+
+    <div class="container nav-container">
+
+
+        <!-- -------------------------------------------------
+             LOGO
+        -------------------------------------------------- -->
+
+        <a
+            href="{{ url_for('home') }}"
+            class="logo"
+            aria-label="STEAM Locator Nigeria Home"
+        >
+
+            <span class="logo-mark">
+                S
+            </span>
+
+            <span class="logo-text">
+                STEAM<span>Locator</span>
+            </span>
+
+        </a>
+
+
+        <!-- -------------------------------------------------
+             MOBILE MENU BUTTON
+        -------------------------------------------------- -->
+
+        <button
+            type="button"
+            class="mobile-menu-button"
+            id="mobileMenuButton"
+            aria-label="Open navigation menu"
+            aria-controls="mainNav"
+            aria-expanded="false"
+        >
+
+            <i class="fas fa-bars"></i>
+
+        </button>
+
+
+        <!-- -------------------------------------------------
+             MAIN NAVIGATION
+        -------------------------------------------------- -->
+
+        <nav
+            class="main-nav"
+            id="mainNav"
+            aria-label="Main navigation"
+        >
+
+            <a
+                href="{{ url_for('home') }}"
+            >
+                Home
+            </a>
+
+
+            <a
+                href="{{ url_for('opportunities_page') }}"
+            >
+                Opportunities
+            </a>
+
+
+            <a
+                href="{{ url_for('fields_page') }}"
+            >
+                STEAM Fields
+            </a>
+
+
+            <a
+                href="{{ url_for('universities_page') }}"
+            >
+                Universities
+            </a>
+
+
+            <a
+                href="{{ url_for('resources_page') }}"
+            >
+                Resources
+            </a>
+
+
+            <a
+                href="{{ url_for('mentorship_page') }}"
+            >
+                Mentorship
+            </a>
+
+
+            <a
+                href="{{ url_for('projects_page') }}"
+            >
+                Projects
+            </a>
+
+
+            <a
+                href="{{ url_for('register_page') }}"
+                class="nav-cta"
+            >
+                Join Us
+            </a>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+<!-- =========================================================
+     MAIN CONTENT
+========================================================= -->
+
+<main>
+
+    {% block content %}
+    {% endblock %}
+
+</main>
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer class="site-footer">
+
+    <div class="container footer-grid">
+
+
+        <!-- =================================================
+             ABOUT
+        ================================================== -->
+
+        <div class="footer-column footer-about">
+
+            <a
+                href="{{ url_for('home') }}"
+                class="footer-logo"
+                aria-label="STEAM Locator Nigeria Home"
+            >
+
+                <span class="logo-mark">
+                    S
+                </span>
+
+                <span class="logo-text">
+                    STEAM<span>Locator</span>
+                </span>
+
+            </a>
+
+
+            <p>
+                Helping young people in Nigeria discover
+                opportunities in science, technology,
+                engineering, arts, and mathematics.
+            </p>
+
+
+            <div class="footer-social">
+
+                <a
+                    href="https://www.linkedin.com/in/fahima-khal-s-b65115237/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Fahima Khal S on LinkedIn"
+                    title="LinkedIn"
+                >
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             EXPLORE
+        ================================================== -->
+
+        <div class="footer-column">
+
+            <h3>
+                Explore
+            </h3>
+
+
+            <a
+                href="{{ url_for('opportunities_page') }}"
+            >
+                Opportunities
+            </a>
+
+
+            <a
+                href="{{ url_for('fields_page') }}"
+            >
+                STEAM Fields
+            </a>
+
+
+            <a
+                href="{{ url_for('universities_page') }}"
+            >
+                Universities
+            </a>
+
+
+            <a
+                href="{{ url_for('resources_page') }}"
+            >
+                Resources
+            </a>
+
+        </div>
+
+
+        <!-- =================================================
+             GET INVOLVED
+        ================================================== -->
+
+        <div class="footer-column">
+
+            <h3>
+                Get Involved
+            </h3>
+
+
+            <a
+                href="{{ url_for('mentorship_page') }}"
+            >
+                Mentorship
+            </a>
+
+
+            <a
+                href="{{ url_for('projects_page') }}"
+            >
+                Projects
+            </a>
+
+
+            <a
+                href="{{ url_for('register_page') }}"
+            >
+                Join Us
+            </a>
+
+
+            <a
+                href="{{ url_for('contact_page') }}"
+            >
+                Contact
+            </a>
+
+        </div>
+
+
+        <!-- =================================================
+             CONTACT
+        ================================================== -->
+
+        <div class="footer-column">
+
+            <h3>
+                Contact
+            </h3>
+
+
+            <!-- EMAIL -->
+
+            <a
+                href="mailto:fahima.shayeq@auw.edu.bd"
+                class="footer-contact-link"
+            >
+
+                <i class="fas fa-envelope"></i>
+
+                <span>
+                    fahima.shayeq@auw.edu.bd
+                </span>
+
+            </a>
+
+
+            <!-- LINKEDIN -->
+
+            <a
+                href="https://www.linkedin.com/in/fahima-khal-s-b65115237/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="footer-contact-link"
+            >
+
+                <i class="fab fa-linkedin-in"></i>
+
+                <span>
+                    LinkedIn
+                </span>
+
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         FOOTER BOTTOM
+         ===================================================== -->
+
+    <div class="footer-bottom">
+
+        <div class="container footer-bottom-content">
+
+            <p>
+                © 2026 STEAM Locator Nigeria.
+                Built to help students find their path in STEAM.
+            </p>
+
+
+            <p class="footer-credit">
+                Discover. Learn. Connect. Grow.
+            </p>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+<!-- =========================================================
+     JAVASCRIPT
+========================================================= -->
+
+<script
+    src="{{ url_for('static', filename='script.js') }}"
+></script>
+
+
+</body>
+
+</html>

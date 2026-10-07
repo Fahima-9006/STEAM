@@ -1,0 +1,972 @@
+{% extends "base.html" %}
+
+{% block title %}
+STEAM Locator Nigeria | Discover Your Future
+{% endblock %}
+
+
+{% block content %}
+
+<!-- ================= HERO ================= -->
+
+<section class="hero">
+
+    <div class="hero-background"></div>
+
+    <div class="container hero-grid">
+
+        <div class="hero-content">
+
+            <div class="hero-badge">
+                <span class="pulse-dot"></span>
+                BUILT FOR NIGERIAN STUDENTS
+            </div>
+
+
+            <h1>
+                Your future in
+                <span>STEAM</span>
+                starts here.
+            </h1>
+
+
+            <p class="hero-text">
+                Discover scholarships, programs, mentorship,
+                universities, resources and projects designed
+                to help Nigerian students build skills and
+                confidence for the future.
+            </p>
+
+
+            <div class="hero-buttons">
+
+                <a
+                    href="{{ url_for('opportunities_page') }}"
+                    class="btn btn-primary"
+                >
+                    Explore Opportunities
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+
+                <a
+                    href="{{ url_for('fields_page') }}"
+                    class="btn btn-light"
+                >
+                    Find Your STEAM Field
+                </a>
+
+            </div>
+
+
+            <div class="hero-trust">
+
+                <div class="trust-item">
+                    <strong>6+</strong>
+                    <span>STEAM Fields</span>
+                </div>
+
+                <div class="trust-item">
+                    <strong>36</strong>
+                    <span>Nigerian States</span>
+                </div>
+
+                <div class="trust-item">
+                    <strong>∞</strong>
+                    <span>Possibilities</span>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="hero-visual">
+
+            <div class="hero-image-wrapper">
+
+                <img
+                    src="{{ url_for('static', filename='images/images1.jpeg') }}"
+                    alt="Students exploring STEAM"
+                    class="hero-image"
+                >
+
+                <div class="floating-card floating-card-one">
+
+                    <span class="floating-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </span>
+
+                    <div>
+                        <strong>Discover</strong>
+                        <small>New opportunities</small>
+                    </div>
+
+                </div>
+
+
+                <div class="floating-card floating-card-two">
+
+                    <span class="floating-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </span>
+
+                    <div>
+                        <strong>Build</strong>
+                        <small>Your confidence</small>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= QUICK SEARCH ================= -->
+
+<section class="quick-search">
+
+    <div class="container">
+
+        <div class="search-card">
+
+            <div class="search-intro">
+
+                <span class="search-icon">
+                    <i class="fas fa-compass"></i>
+                </span>
+
+                <div>
+                    <strong>What are you looking for?</strong>
+                    <p>
+                        Start exploring opportunities made for you.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="search-options">
+
+                <a
+                    href="{{ url_for('opportunities_page') }}?category=scholarship"
+                    class="search-option"
+                >
+                    <i class="fas fa-award"></i>
+                    <span>Scholarships</span>
+                </a>
+
+                <a
+                    href="{{ url_for('opportunities_page') }}?category=bootcamp"
+                    class="search-option"
+                >
+                    <i class="fas fa-laptop-code"></i>
+                    <span>Bootcamps</span>
+                </a>
+
+                <a
+                    href="{{ url_for('opportunities_page') }}?category=internship"
+                    class="search-option"
+                >
+                    <i class="fas fa-briefcase"></i>
+                    <span>Internships</span>
+                </a>
+
+                <a
+                    href="{{ url_for('mentorship_page') }}"
+                    class="search-option"
+                >
+                    <i class="fas fa-users"></i>
+                    <span>Mentorship</span>
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= STEAM FIELDS ================= -->
+
+<section class="section">
+
+    <div class="container">
+
+        <div class="section-heading centered">
+
+            <span class="eyebrow">
+                EXPLORE YOUR INTEREST
+            </span>
+
+            <h2>
+                Find your place in STEAM
+            </h2>
+
+            <p>
+                Whether you love solving problems, building technology,
+                experimenting with science or creating digital art,
+                there is a path for you.
+            </p>
+
+        </div>
+
+
+        <div class="field-grid">
+
+            <a
+                href="{{ url_for('opportunities_page') }}?field=science"
+                class="field-card"
+            >
+
+                <div class="field-number">01</div>
+
+                <div class="field-icon">
+                    <i class="fas fa-flask"></i>
+                </div>
+
+                <h3>Science</h3>
+
+                <p>
+                    Explore discovery, experiments,
+                    research and innovation.
+                </p>
+
+                <span class="field-link">
+                    Explore <i class="fas fa-arrow-right"></i>
+                </span>
+
+            </a>
+
+
+            <a
+                href="{{ url_for('opportunities_page') }}?field=technology"
+                class="field-card"
+            >
+
+                <div class="field-number">02</div>
+
+                <div class="field-icon">
+                    <i class="fas fa-code"></i>
+                </div>
+
+                <h3>Technology</h3>
+
+                <p>
+                    Learn coding, AI, software,
+                    data and digital skills.
+                </p>
+
+                <span class="field-link">
+                    Explore <i class="fas fa-arrow-right"></i>
+                </span>
+
+            </a>
+
+
+            <a
+                href="{{ url_for('opportunities_page') }}?field=engineering"
+                class="field-card"
+            >
+
+                <div class="field-number">03</div>
+
+                <div class="field-icon">
+                    <i class="fas fa-gears"></i>
+                </div>
+
+                <h3>Engineering</h3>
+
+                <p>
+                    Design, build and solve
+                    real-world problems.
+                </p>
+
+                <span class="field-link">
+                    Explore <i class="fas fa-arrow-right"></i>
+                </span>
+
+            </a>
+
+
+            <a
+                href="{{ url_for('opportunities_page') }}?field=mathematics"
+                class="field-card"
+            >
+
+                <div class="field-number">04</div>
+
+                <div class="field-icon">
+                    <i class="fas fa-calculator"></i>
+                </div>
+
+                <h3>Mathematics</h3>
+
+                <p>
+                    Develop logical thinking,
+                    problem-solving and analysis.
+                </p>
+
+                <span class="field-link">
+                    Explore <i class="fas fa-arrow-right"></i>
+                </span>
+
+            </a>
+
+
+            <a
+                href="{{ url_for('opportunities_page') }}?field=robotics"
+                class="field-card"
+            >
+
+                <div class="field-number">05</div>
+
+                <div class="field-icon">
+                    <i class="fas fa-robot"></i>
+                </div>
+
+                <h3>Robotics</h3>
+
+                <p>
+                    Turn ideas into intelligent
+                    machines and systems.
+                </p>
+
+                <span class="field-link">
+                    Explore <i class="fas fa-arrow-right"></i>
+                </span>
+
+            </a>
+
+
+            <a
+                href="{{ url_for('opportunities_page') }}?field=digital-arts"
+                class="field-card"
+            >
+
+                <div class="field-number">06</div>
+
+                <div class="field-icon">
+                    <i class="fas fa-palette"></i>
+                </div>
+
+                <h3>Digital Arts</h3>
+
+                <p>
+                    Combine creativity, technology
+                    and visual storytelling.
+                </p>
+
+                <span class="field-link">
+                    Explore <i class="fas fa-arrow-right"></i>
+                </span>
+
+            </a>
+
+        </div>
+
+
+        <div class="center-button">
+
+            <a
+                href="{{ url_for('fields_page') }}"
+                class="btn btn-outline"
+            >
+                View All STEAM Fields
+                <i class="fas fa-arrow-right"></i>
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= WHY PLATFORM ================= -->
+
+<section class="section section-dark">
+
+    <div class="container split-section">
+
+        <div class="split-image">
+
+            <img
+                src="{{ url_for('static', filename='images/images2.jpeg') }}"
+                alt="Students learning STEAM"
+            >
+
+            <div class="image-label">
+                <i class="fas fa-star"></i>
+                Learn. Explore. Create.
+            </div>
+
+        </div>
+
+
+        <div class="split-content">
+
+            <span class="eyebrow eyebrow-light">
+                WHY STEAM LOCATOR?
+            </span>
+
+            <h2>
+                Finding your next opportunity
+                should not be difficult.
+            </h2>
+
+            <p>
+                Opportunities can be difficult to find when
+                information is spread across different websites,
+                organizations and social media platforms.
+            </p>
+
+            <p>
+                STEAM Locator Nigeria brings useful opportunities
+                together so students can spend less time searching
+                and more time learning, building and growing.
+            </p>
+
+
+            <div class="feature-list">
+
+                <div class="feature-item">
+
+                    <span>
+                        <i class="fas fa-check"></i>
+                    </span>
+
+                    <div>
+                        <strong>One place to explore</strong>
+                        <p>
+                            Find programs, scholarships and resources
+                            in one organized platform.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="feature-item">
+
+                    <span>
+                        <i class="fas fa-check"></i>
+                    </span>
+
+                    <div>
+                        <strong>Built with students in mind</strong>
+                        <p>
+                            Simple categories make opportunities
+                            easier to understand and discover.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="feature-item">
+
+                    <span>
+                        <i class="fas fa-check"></i>
+                    </span>
+
+                    <div>
+                        <strong>Community and mentorship</strong>
+                        <p>
+                            Connect with communities that can help
+                            you move forward.
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= HOW IT WORKS ================= -->
+
+<section class="section">
+
+    <div class="container">
+
+        <div class="section-heading centered">
+
+            <span class="eyebrow">
+                HOW IT WORKS
+            </span>
+
+            <h2>
+                Your journey can start today.
+            </h2>
+
+            <p>
+                Three simple steps to begin exploring
+                your STEAM future.
+            </p>
+
+        </div>
+
+
+        <div class="steps-grid">
+
+            <div class="step">
+
+                <div class="step-number">1</div>
+
+                <div class="step-icon">
+                    <i class="fas fa-compass"></i>
+                </div>
+
+                <h3>Explore</h3>
+
+                <p>
+                    Browse opportunities, fields, universities
+                    and learning resources.
+                </p>
+
+            </div>
+
+
+            <div class="step">
+
+                <div class="step-number">2</div>
+
+                <div class="step-icon">
+                    <i class="fas fa-filter"></i>
+                </div>
+
+                <h3>Find Your Fit</h3>
+
+                <p>
+                    Filter opportunities by field, type
+                    and Nigerian state.
+                </p>
+
+            </div>
+
+
+            <div class="step">
+
+                <div class="step-number">3</div>
+
+                <div class="step-icon">
+                    <i class="fas fa-rocket"></i>
+                </div>
+
+                <h3>Take Action</h3>
+
+                <p>
+                    Apply, learn, connect with mentors
+                    and start building.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= IMAGE CTA ================= -->
+
+<section class="journey-section">
+
+    <div class="journey-overlay"></div>
+
+    <div class="container journey-content">
+
+        <div class="journey-image">
+
+            <img
+                src="{{ url_for('static', filename='images/images3.jpeg') }}"
+                alt="Young students exploring their future"
+            >
+
+        </div>
+
+
+        <div class="journey-text">
+
+            <span class="eyebrow eyebrow-light">
+                YOUR NEXT STEP
+            </span>
+
+            <h2>
+                Your curiosity can become
+                your career.
+            </h2>
+
+            <p>
+                Start small. Learn something new. Join a community.
+                Build a project. Apply for an opportunity.
+                Every step counts.
+            </p>
+
+
+            <div class="journey-buttons">
+
+                <a
+                    href="{{ url_for('register_page') }}"
+                    class="btn btn-white"
+                >
+                    Join STEAM Locator
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+
+                <a
+                    href="{{ url_for('contact_page') }}"
+                    class="btn btn-transparent"
+                >
+                    Contact Us
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= ORGANIZATIONS ================= -->
+
+<section class="section">
+
+    <div class="container">
+
+        <div class="section-heading centered">
+
+            <span class="eyebrow">
+                CONNECT WITH COMMUNITIES
+            </span>
+
+            <h2>
+                Organizations opening doors
+            </h2>
+
+            <p>
+                Explore organizations and communities supporting
+                girls and young people in technology and STEAM.
+            </p>
+
+        </div>
+
+
+        <div class="organization-grid">
+
+            <a
+                href="https://naijagirlsintech.org/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="organization-card"
+            >
+
+                <span>
+                    <i class="fas fa-laptop-code"></i>
+                </span>
+
+                <strong>Naija Girls in Tech</strong>
+
+                <small>
+                    Technology community
+                </small>
+
+            </a>
+
+
+            <a
+                href="https://afrotechgirls.org/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="organization-card"
+            >
+
+                <span>
+                    <i class="fas fa-code"></i>
+                </span>
+
+                <strong>Afro-Tech Girls</strong>
+
+                <small>
+                    Digital skills
+                </small>
+
+            </a>
+
+
+            <a
+                href="https://www.visiolafoundation.org/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="organization-card"
+            >
+
+                <span>
+                    <i class="fas fa-graduation-cap"></i>
+                </span>
+
+                <strong>Visiola Foundation</strong>
+
+                <small>
+                    Education & STEAM
+                </small>
+
+            </a>
+
+
+            <a
+                href="https://shecodeafrica.org/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="organization-card"
+            >
+
+                <span>
+                    <i class="fas fa-users"></i>
+                </span>
+
+                <strong>She Code Africa</strong>
+
+                <small>
+                    Women in technology
+                </small>
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =====================================================
+     OUR TEAM
+===================================================== -->
+
+<section class="team-section" id="team">
+
+    <div class="container">
+
+        <div class="section-heading team-heading">
+
+            <span class="section-eyebrow">
+                MEET THE TEAM
+            </span>
+
+            <h2>
+                The People Behind
+                <span>STEAM Locator</span>
+            </h2>
+
+            <p>
+                We are working together to make STEAM opportunities,
+                resources, mentorship, and information easier to discover.
+            </p>
+
+        </div>
+
+
+        <div class="team-grid">
+
+
+            <!-- Fahima -->
+
+            <article class="team-card">
+
+                <div class="team-image">
+
+                    <img
+                        src="{{ url_for('static', filename='images/images1.jpeg') }}"
+                        alt="Fahima Khal S"
+                    >
+
+                </div>
+
+                <div class="team-content">
+
+                    <span class="team-role">
+                        Founder & Project Lead
+                    </span>
+
+                    <h3>
+                        Fahima Khal S
+                    </h3>
+
+                    <p>
+                        Leads the development of STEAM Locator and
+                        works to connect students with educational
+                        opportunities, resources, and mentorship.
+                    </p>
+
+                    <a
+                        href="https://www.linkedin.com/in/fahima-khal-s-b65115237/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="team-link"
+                    >
+                        <i class="fab fa-linkedin-in"></i>
+                        <span>Connect on LinkedIn</span>
+                        <i class="fas fa-arrow-up-right-from-square"></i>
+                    </a>
+
+                </div>
+
+            </article>
+
+
+            <!-- Omotese -->
+
+            <article class="team-card">
+
+                <div class="team-image team-placeholder">
+
+                    <div class="placeholder-avatar">
+                        OA
+                    </div>
+
+                </div>
+
+                <div class="team-content">
+
+                    <span class="team-role">
+                        Team Member
+                    </span>
+
+                    <h3>
+                        Omotese Ayobami
+                    </h3>
+
+                    <p>
+                        Contributes to the project by supporting
+                        ideas and initiatives that help students
+                        discover STEAM opportunities.
+                    </p>
+
+                    <a
+                        href="https://www.linkedin.com/in/omotese-ayobami-235a4829b"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="team-link"
+                    >
+                        <i class="fab fa-linkedin-in"></i>
+                        <span>Connect on LinkedIn</span>
+                        <i class="fas fa-arrow-up-right-from-square"></i>
+                    </a>
+
+                </div>
+
+            </article>
+
+
+            <!-- Sara -->
+
+            <article class="team-card">
+
+                <div class="team-image team-placeholder">
+
+                    <div class="placeholder-avatar">
+                        SA
+                    </div>
+
+                </div>
+
+                <div class="team-content">
+
+                    <span class="team-role">
+                        Team Member
+                    </span>
+
+                    <h3>
+                        Eng. Sara Azazy
+                    </h3>
+
+                    <p>
+                        Supports the team's vision of creating
+                        accessible pathways to learning, technology,
+                        and STEAM opportunities.
+                    </p>
+
+                    <a
+                        href="https://www.linkedin.com/in/eng-sara-azazy/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="team-link"
+                    >
+                        <i class="fab fa-linkedin-in"></i>
+                        <span>Connect on LinkedIn</span>
+                        <i class="fas fa-arrow-up-right-from-square"></i>
+                    </a>
+
+                </div>
+
+            </article>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= FINAL CTA ================= -->
+
+<section class="final-cta">
+
+    <div class="container">
+
+        <div class="final-cta-inner">
+
+            <span class="eyebrow">
+                START TODAY
+            </span>
+
+            <h2>
+                There is a place for your ideas.
+            </h2>
+
+            <p>
+                Explore. Learn. Connect. Create.
+                Your STEAM journey starts with one step.
+            </p>
+
+            <div class="final-buttons">
+
+                <a
+                    href="{{ url_for('opportunities_page') }}"
+                    class="btn btn-primary"
+                >
+                    Explore Opportunities
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+
+                <a
+                    href="{{ url_for('register_page') }}"
+                    class="btn btn-outline"
+                >
+                    Join the Community
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

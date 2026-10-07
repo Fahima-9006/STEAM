@@ -1,0 +1,278 @@
+
+{% extends "base.html" %}
+
+{% block title %}
+STEM Universities | STEAM Locator Nigeria
+{% endblock %}
+
+{% block content %}
+
+<!-- ================= UNIVERSITY HERO ================= -->
+
+<section class="page-hero">
+    <div class="container">
+
+        <span class="eyebrow">
+            UNIVERSITY FINDER
+        </span>
+
+        <h1>
+            Explore STEM universities.
+        </h1>
+
+        <p>
+            Discover universities in Nigeria, Africa, and around
+            the world where you can study STEM and build your future.
+        </p>
+
+    </div>
+</section>
+
+
+<!-- ================= UNIVERSITY FINDER ================= -->
+
+<section class="section university-section">
+    <div class="container">
+
+        <div class="section-heading">
+            <div>
+
+                <span class="eyebrow">
+                    FIND A UNIVERSITY
+                </span>
+
+                <h2>
+                    Find the right
+                    <span>place to study.</span>
+                </h2>
+
+                <p>
+                    Search universities by name, country, city,
+                    or STEM-related area.
+                </p>
+
+            </div>
+        </div>
+
+
+        <!-- ================= COUNTRY FILTERS ================= -->
+
+        <div class="country-filters" id="countryFilters">
+
+            <button
+                class="filter-button active"
+                data-country=""
+                type="button">
+                All Universities
+            </button>
+
+            <button
+                class="filter-button"
+                data-country="Nigeria"
+                type="button">
+                Nigeria
+            </button>
+
+            <button
+                class="filter-button"
+                data-country="Canada"
+                type="button">
+                Canada
+            </button>
+
+            <button
+                class="filter-button"
+                data-country="USA"
+                type="button">
+                USA
+            </button>
+
+            <button
+                class="filter-button"
+                data-country="Japan"
+                type="button">
+                Japan
+            </button>
+
+            <button
+                class="filter-button"
+                data-country="Africa"
+                type="button">
+                Africa
+            </button>
+
+        </div>
+
+
+        <!-- ================= SEARCH ================= -->
+
+        <div class="university-search">
+
+            <label for="universitySearch">
+                Search universities
+            </label>
+
+            <div class="search-box">
+
+                <i class="fas fa-search"></i>
+
+                <input
+                    type="text"
+                    id="universitySearch"
+                    placeholder="Search by university, city, country, or STEM field..."
+                    autocomplete="off">
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= RESULT COUNT ================= -->
+
+        <div class="university-result-header">
+
+            <p id="universityResultCount">
+                Loading universities...
+            </p>
+
+        </div>
+
+
+        <!-- ================= UNIVERSITY RESULTS ================= -->
+
+        <div
+            id="universityGrid"
+            class="cards-grid university-grid">
+        </div>
+
+
+        <!-- ================= LOADING ================= -->
+
+        <div
+            id="universityLoading"
+            class="empty-state">
+
+            <i class="fas fa-spinner fa-spin"></i>
+
+            <h3>
+                Finding universities...
+            </h3>
+
+            <p>
+                Please wait while we load available universities.
+            </p>
+
+        </div>
+
+
+        <!-- ================= NO RESULTS ================= -->
+
+        <div
+            id="noUniversityResults"
+            class="empty-state"
+            style="display: none;">
+
+            <i class="fas fa-university"></i>
+
+            <h3>
+                No universities found.
+            </h3>
+
+            <p>
+                Try another country or search term.
+            </p>
+
+            <button
+                type="button"
+                id="clearUniversitySearch"
+                class="btn btn-primary">
+
+                Clear Search
+
+            </button>
+
+        </div>
+
+
+        <!-- ================= ERROR ================= -->
+
+        <div
+            id="universityError"
+            class="empty-state"
+            style="display: none;">
+
+            <i class="fas fa-circle-exclamation"></i>
+
+            <h3>
+                Unable to load universities.
+            </h3>
+
+            <p>
+                Please refresh the page and try again.
+            </p>
+
+            <button
+                type="button"
+                onclick="window.location.reload()"
+                class="btn btn-primary">
+
+                Refresh Page
+
+            </button>
+
+        </div>
+
+    </div>
+</section>
+
+
+<!-- ================= CTA ================= -->
+
+<section class="section section-light">
+    <div class="container">
+
+        <div class="cta-box">
+
+            <span class="eyebrow">
+                PLAN YOUR FUTURE
+            </span>
+
+            <h2>
+                Your STEM journey can start today.
+            </h2>
+
+            <p>
+                Explore opportunities, learning resources,
+                projects, and mentorship to prepare for university.
+            </p>
+
+            <div class="hero-buttons">
+
+                <a
+                    href="{{ url_for('opportunities_page') }}"
+                    class="btn btn-primary">
+
+                    Explore Opportunities
+
+                    <i class="fas fa-arrow-right"></i>
+
+                </a>
+
+
+                <a
+                    href="{{ url_for('resources_page') }}"
+                    class="btn btn-outline">
+
+                    Learning Resources
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+{% endblock %}
+

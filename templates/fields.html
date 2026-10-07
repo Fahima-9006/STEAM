@@ -1,0 +1,266 @@
+{% extends "base.html" %}
+
+{% block title %}
+STEAM Fields | STEAM Locator Nigeria
+{% endblock %}
+
+{% block content %}
+
+<!-- ================= FIELD HERO ================= -->
+
+<section class="page-hero">
+
+    <div class="container">
+
+        <span class="eyebrow">
+            EXPLORE STEAM
+        </span>
+
+        <h1>
+            Which STEAM field interests you?
+        </h1>
+
+        <p>
+            Explore different STEAM areas and discover
+            learning resources, projects, mentorship,
+            and opportunities connected to your interests.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- ================= STEAM FIELDS ================= -->
+
+<section class="section">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <div>
+
+                <span class="eyebrow">
+                    FIND YOUR INTEREST
+                </span>
+
+                <h2>
+                    Discover your
+                    <span>STEAM path.</span>
+                </h2>
+
+            </div>
+
+        </div>
+
+
+        <div class="large-field-grid">
+
+
+            <!-- ================= SCIENCE ================= -->
+
+            <article class="large-field-card">
+
+                <span class="field-icon">
+                    🧬
+                </span>
+
+                <h2>
+                    Science
+                </h2>
+
+                <p>
+                    Explore Biology, Chemistry, Physics,
+                    Environmental Science, Health Science,
+                    and other scientific disciplines.
+                </p>
+
+                <a
+                    href="{{ url_for('opportunities_page') }}?field=science"
+                    class="btn btn-primary">
+
+                    Explore Science
+                    <i class="fas fa-arrow-right"></i>
+
+                </a>
+
+            </article>
+
+
+            <!-- ================= TECHNOLOGY ================= -->
+
+            <article class="large-field-card">
+
+                <span class="field-icon">
+                    💻
+                </span>
+
+                <h2>
+                    Technology
+                </h2>
+
+                <p>
+                    Explore Computer Science, Artificial
+                    Intelligence, Data Science, Cybersecurity,
+                    Software Development, and more.
+                </p>
+
+                <a
+                    href="{{ url_for('opportunities_page') }}?field=technology"
+                    class="btn btn-primary">
+
+                    Explore Technology
+                    <i class="fas fa-arrow-right"></i>
+
+                </a>
+
+            </article>
+
+
+            <!-- ================= ENGINEERING ================= -->
+
+            <article class="large-field-card">
+
+                <span class="field-icon">
+                    ⚙️
+                </span>
+
+                <h2>
+                    Engineering
+                </h2>
+
+                <p>
+                    Discover Civil, Electrical, Mechanical,
+                    Computer, Chemical, and other engineering
+                    fields.
+                </p>
+
+                <a
+                    href="{{ url_for('opportunities_page') }}?field=engineering"
+                    class="btn btn-primary">
+
+                    Explore Engineering
+                    <i class="fas fa-arrow-right"></i>
+
+                </a>
+
+            </article>
+
+
+            <!-- ================= ARTS ================= -->
+
+            <article class="large-field-card">
+
+                <span class="field-icon">
+                    🎨
+                </span>
+
+                <h2>
+                    Arts
+                </h2>
+
+                <p>
+                    Combine creativity and technology through
+                    Digital Arts, Design, Animation, Multimedia,
+                    UI/UX, and creative technology.
+                </p>
+
+                <a
+                    href="{{ url_for('opportunities_page') }}?field=arts"
+                    class="btn btn-primary">
+
+                    Explore Arts
+                    <i class="fas fa-arrow-right"></i>
+
+                </a>
+
+            </article>
+
+
+            <!-- ================= MATHEMATICS ================= -->
+
+            <article class="large-field-card">
+
+                <span class="field-icon">
+                    ∑
+                </span>
+
+                <h2>
+                    Mathematics
+                </h2>
+
+                <p>
+                    Explore Mathematics, Statistics,
+                    Applied Mathematics, Data Analysis,
+                    Mathematical Modeling, and more.
+                </p>
+
+                <a
+                    href="{{ url_for('opportunities_page') }}?field=mathematics"
+                    class="btn btn-primary">
+
+                    Explore Mathematics
+                    <i class="fas fa-arrow-right"></i>
+
+                </a>
+
+            </article>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= STARTER CTA ================= -->
+
+<section class="section section-light">
+
+    <div class="container">
+
+        <div class="cta-box">
+
+            <span class="eyebrow">
+                NOT SURE WHERE TO START?
+            </span>
+
+            <h2>
+                You don't have to choose your future today.
+            </h2>
+
+            <p>
+                Try a beginner-friendly resource or project,
+                discover what you enjoy, and build your confidence
+                one step at a time.
+            </p>
+
+            <div class="hero-buttons">
+
+                <a
+                    href="{{ url_for('resources_page') }}"
+                    class="btn btn-primary">
+
+                    Start Learning
+                    <i class="fas fa-arrow-right"></i>
+
+                </a>
+
+                <a
+                    href="{{ url_for('projects_page') }}"
+                    class="btn btn-outline">
+
+                    Explore Projects
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

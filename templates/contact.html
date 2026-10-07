@@ -1,0 +1,439 @@
+{% extends "base.html" %}
+
+{% block title %}
+Contact Us | STEAM Locator Nigeria
+{% endblock %}
+
+{% block content %}
+
+<section class="page-hero contact-hero">
+
+    <div class="container">
+
+        <span class="eyebrow">
+            GET IN TOUCH
+        </span>
+
+        <h1>
+            We'd love to hear from you.
+        </h1>
+
+        <p>
+            Have a question, suggestion, partnership idea, or want to
+            share a STEAM opportunity? Send us a message.
+        </p>
+
+    </div>
+
+</section>
+
+
+<section class="section contact-section">
+
+    <div class="container">
+
+        <div class="contact-layout">
+
+
+            <!-- CONTACT INFORMATION -->
+
+            <div class="contact-info">
+
+                <span class="eyebrow">
+                    CONTACT STEAM LOCATOR
+                </span>
+
+                <h2>
+                    Let's build better access to STEAM together.
+                </h2>
+
+                <p>
+                    STEAM Locator Nigeria makes it easier for students
+                    to discover opportunities, resources, mentors,
+                    universities, and communities.
+                </p>
+
+
+                <div class="contact-details">
+
+
+                    <div class="contact-detail">
+
+                        <div class="contact-detail-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+
+                        <div>
+
+                            <span>Email</span>
+
+                            <a href="mailto:fahima.shayeq@auw.edu.bd">
+                                fahima.shayeq@auw.edu.bd
+                            </a>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="contact-detail">
+
+                        <div class="contact-detail-icon">
+                            <i class="fas fa-location-dot"></i>
+                        </div>
+
+                        <div>
+
+                            <span>Focus</span>
+
+                            <strong>
+                                Nigeria-wide STEAM opportunities
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="contact-detail">
+
+                        <div class="contact-detail-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+
+                        <div>
+
+                            <span>Community</span>
+
+                            <strong>
+                                Students, mentors, educators & organizations
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="contact-mini-card">
+
+                    <div class="mini-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Have an opportunity to share?
+                        </h3>
+
+                        <p>
+                            Tell us about a Nigerian STEAM program,
+                            scholarship, competition, or community.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- CONTACT FORM -->
+
+            <div class="contact-card">
+
+                <div class="contact-card-header">
+
+                    <div class="contact-card-icon">
+                        <i class="fas fa-paper-plane"></i>
+                    </div>
+
+                    <div>
+
+                        <h2>
+                            Send us a message
+                        </h2>
+
+                        <p>
+                            We are happy to hear from you.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- IMPORTANT:
+                     No action="/contact"
+                     JavaScript sends the form to /api/contact
+                -->
+
+                <form id="contactForm">
+
+
+                    <!-- NAME -->
+
+                    <div class="form-group">
+
+                        <label for="contactName">
+                            Full Name
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <i class="fas fa-user"></i>
+
+                            <input
+                                type="text"
+                                id="contactName"
+                                name="name"
+                                placeholder="Enter your full name"
+                                autocomplete="name"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- EMAIL -->
+
+                    <div class="form-group">
+
+                        <label for="contactEmail">
+                            Email Address
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <i class="fas fa-envelope"></i>
+
+                            <input
+                                type="email"
+                                id="contactEmail"
+                                name="email"
+                                placeholder="you@example.com"
+                                autocomplete="email"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- MESSAGE -->
+
+                    <div class="form-group">
+
+                        <label for="contactMessage">
+                            Your Message
+                        </label>
+
+                        <div class="input-wrapper textarea-wrapper">
+
+                            <i class="fas fa-message"></i>
+
+                            <textarea
+                                id="contactMessage"
+                                name="message"
+                                rows="6"
+                                placeholder="Write your message here..."
+                                required
+                            ></textarea>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- STATUS MESSAGE -->
+
+                    <div
+                        id="contactMessageBox"
+                        class="form-message"
+                        aria-live="polite"
+                    ></div>
+
+
+                    <!-- BUTTON -->
+
+                    <button
+                        type="submit"
+                        class="btn btn-primary btn-full"
+                        id="contactButton"
+                    >
+
+                        <span>
+                            Send Message
+                        </span>
+
+                        <i class="fas fa-paper-plane"></i>
+
+                    </button>
+
+
+                    <p class="form-note">
+
+                        <i class="fas fa-lock"></i>
+
+                        We respect your privacy and will only use
+                        your information to respond to your message.
+
+                    </p>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}
+
+
+{% block extra_js %}
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const form =
+        document.getElementById("contactForm");
+
+    const messageBox =
+        document.getElementById("contactMessageBox");
+
+    const button =
+        document.getElementById("contactButton");
+
+
+    if (!form) {
+        return;
+    }
+
+
+    form.addEventListener("submit", async function (event) {
+
+        event.preventDefault();
+
+
+        messageBox.className =
+            "form-message";
+
+        messageBox.innerHTML =
+            "";
+
+
+        button.disabled = true;
+
+
+        const originalButton =
+            button.innerHTML;
+
+
+        button.innerHTML =
+            '<i class="fas fa-spinner fa-spin"></i> Sending...';
+
+
+        const formData = {
+
+            name:
+                document.getElementById("contactName")
+                .value
+                .trim(),
+
+            email:
+                document.getElementById("contactEmail")
+                .value
+                .trim(),
+
+            message:
+                document.getElementById("contactMessage")
+                .value
+                .trim()
+
+        };
+
+
+        try {
+
+            const response =
+                await fetch("/api/contact", {
+
+                    method: "POST",
+
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+
+                    body: JSON.stringify(formData)
+
+                });
+
+
+            const data =
+                await response.json();
+
+
+            if (response.ok && data.success) {
+
+                messageBox.className =
+                    "form-message success";
+
+                messageBox.innerHTML =
+                    '<i class="fas fa-circle-check"></i> ' +
+                    data.message;
+
+                form.reset();
+
+            } else {
+
+                messageBox.className =
+                    "form-message error";
+
+                messageBox.innerHTML =
+                    '<i class="fas fa-circle-exclamation"></i> ' +
+                    (
+                        data.message ||
+                        "Unable to send your message."
+                    );
+
+            }
+
+        } catch (error) {
+
+            console.error(
+                "Contact form error:",
+                error
+            );
+
+            messageBox.className =
+                "form-message error";
+
+            messageBox.innerHTML =
+                '<i class="fas fa-circle-exclamation"></i> ' +
+                'Unable to connect to the server. ' +
+                'Please try again.';
+
+        }
+
+
+        button.disabled = false;
+
+        button.innerHTML =
+            originalButton;
+
+    });
+
+});
+
+</script>
+
+{% endblock %}
